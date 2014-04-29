@@ -74,3 +74,58 @@ function handleCredits(data) {
     }
 
 }
+
+$('#content').css('background-image', 'url(/s/img/bg-server-mc.png)');
+
+var expireTime = 7184;
+var expireNext = new Date().getTime();
+
+function calcExpire() {
+    expireTime--;
+    if (expireTime < 0) {
+        location.reload();
+    } else {
+        expireNext += 1000;
+        setTimeout(calcExpire, expireNext - new Date().getTime());
+    }
+}
+calcExpire();
+
+function doSave() {
+    if ($('#customJar').val() == 'minecraft.jar') {
+        alert('The custom jar filename minecraft.jar is not valid. Please select another.');
+        return false;
+    } else {
+        $('#confForm').submit();
+        $('.saveBtn').prop('disabled', true);
+        $('.saveLoading').show(0);
+        return true;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
